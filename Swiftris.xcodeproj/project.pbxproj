@@ -19,6 +19,7 @@
 		6B7820041B9410F300EBE89C /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B781FFF1B9410F300EBE89C /* gameover.mp3 */; };
 		6B7820051B9410F300EBE89C /* levelup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B7820001B9410F300EBE89C /* levelup.mp3 */; };
 		6B7820061B9410F300EBE89C /* theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B7820011B9410F300EBE89C /* theme.mp3 */; };
+		6B78200A1B94115400EBE89C /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 6B7820091B94115400EBE89C /* Sprites.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		6B781FFF1B9410F300EBE89C /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
 		6B7820001B9410F300EBE89C /* levelup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = levelup.mp3; sourceTree = "<group>"; };
 		6B7820011B9410F300EBE89C /* theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = theme.mp3; sourceTree = "<group>"; };
+		6B7820091B94115400EBE89C /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Sprites.atlas; path = Sounds/Sprites.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				6B781FDE1B940EF000EBE89C /* GameViewController.swift */,
 				6B781FE01B940EF000EBE89C /* Main.storyboard */,
 				6B781FE31B940EF000EBE89C /* Images.xcassets */,
+				6B7820091B94115400EBE89C /* Sprites.atlas */,
 				6B781FE51B940EF000EBE89C /* LaunchScreen.xib */,
 				6B781FFC1B9410F300EBE89C /* Sounds */,
 				6B781FD61B940EF000EBE89C /* Supporting Files */,
@@ -224,6 +227,7 @@
 				6B7820041B9410F300EBE89C /* gameover.mp3 in Resources */,
 				6B781FE41B940EF000EBE89C /* Images.xcassets in Resources */,
 				6B7820051B9410F300EBE89C /* levelup.mp3 in Resources */,
+				6B78200A1B94115400EBE89C /* Sprites.atlas in Resources */,
 				6B7820021B9410F300EBE89C /* bomb.mp3 in Resources */,
 				6B781FE21B940EF000EBE89C /* Main.storyboard in Resources */,
 			);
