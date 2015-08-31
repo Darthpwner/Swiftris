@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Swiftris/GameViewController.swift"
-            timestampString = "462689959.690209"
+            timestampString = "462690364.812815"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "GameViewController"
             landmarkType = "3">
          </BreakpointContent>
