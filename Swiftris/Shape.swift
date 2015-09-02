@@ -124,6 +124,10 @@ class Shape: Hashable, Printable {
         }
     }
     
+    final func lowerShapeByOneRow() {
+        shiftBy(0, rows: 1)
+    }
+    
     final func rotateBlocks(orientation: Orientation) {
         if let blockRowColumnTranslation: Array<(columnDiff: Int, rowDiff: Int)> = blockRowColumnPositions[orientation] {
             
