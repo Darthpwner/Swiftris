@@ -41,6 +41,11 @@ class GameViewController: UIViewController, SwiftrisDelegate {
         return true
     }
     
+    
+    @IBAction func didTap(sender: UITapGestureRecognizer) {
+        
+    }
+    
     //#3
     //#1
     func didTick() {
