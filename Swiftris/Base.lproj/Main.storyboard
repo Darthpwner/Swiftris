@@ -21,15 +21,12 @@
                             <outletCollection property="gestureRecognizers" destination="jx7-tI-cmr" appends="YES" id="5IQ-ec-qko"/>
                         </connections>
                     </view>
-                    <connections>
-                        <outlet property="didFuck" destination="jx7-tI-cmr" id="e4f-qd-8qB"/>
-                        <outlet property="didTap" destination="jx7-tI-cmr" id="fei-3I-Pum"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btX-cZ-eVz" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="jx7-tI-cmr">
                     <connections>
                         <action selector="didTap:" destination="LVB-YS-i5n" id="anz-xL-sOY"/>
+                        <outlet property="delegate" destination="LVB-YS-i5n" id="Md8-dy-FfU"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
