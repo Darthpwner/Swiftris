@@ -157,11 +157,24 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         scene.redrawShape(swiftris.fallingShape!) {
             swiftris.letShapeFall()
         }
+        scene.playSound("drop.mp3")
     }
     
     func gameShapeDidLand(swiftris: Swiftris) {
         scene.stopTicking()
-        nextShape()
+        self.view.userInteractionEnabled = false
+        //#1
+        let removedLines = swiftris.removeCompletedLines()
+        if removedLines.linesRemoved.count > 0 {
+            self.scoreLabel.text = "\(swiftris.score)"
+            scene.animateCollapsingLines(removedLines.linesRemoved, fallenBlocks: removedLines.fallenBlocks) {
+                //#2
+                self.gameShapeDidLand(swiftris)
+            }
+            scene.playSound("bomb.mp3")
+        } else {
+            nextShape()
+        }
     }
     
     //#3
