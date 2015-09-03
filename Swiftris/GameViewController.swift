@@ -72,7 +72,26 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     
     
     @IBAction func didSwipe(sender: UISwipeGestureRecognizer) {
-        
+        swiftris.dropShape()
+    }
+    
+    //#1
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+    //#2
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailByGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        if let swipeRec = gestureRecognizer as? UISwipeGestureRecognizer {
+            if let panRec = otherGestureRecognizer as? UIPanGestureRecognizer {
+                return true
+            }
+        } else if let panRec = gestureRecognizer as? UIPanGestureRecognizer {
+            if let tapRec = otherGestureRecognizer as? UITapGestureRecognizer {
+                return true
+            }
+        }
+        return false
     }
     
     //#3
@@ -111,7 +130,13 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     
     func gameDidLevelUp(swiftris: Swiftris) {}
     
-    func gameShapeDidDrop(swiftris: Swiftris) {}
+    func gameShapeDidDrop(swiftris: Swiftris) {
+        //#3
+        scene.stopTicking()
+        scene.redrawShape(swiftris.fallingShape!) {
+            swiftris.letShapeFall()
+        }
+    }
     
     func gameShapeDidLand(swiftris: Swiftris) {
         scene.stopTicking()
