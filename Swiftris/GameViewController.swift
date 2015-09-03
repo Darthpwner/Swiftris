@@ -70,6 +70,11 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         }
     }
     
+    
+    @IBAction func didSwipe(sender: UISwipeGestureRecognizer) {
+        
+    }
+    
     //#3
     //#1
     func didTick() {
