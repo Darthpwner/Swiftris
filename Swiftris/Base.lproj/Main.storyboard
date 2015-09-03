@@ -33,6 +33,7 @@
                 <panGestureRecognizer minimumNumberOfTouches="1" id="boU-Ty-3n8">
                     <connections>
                         <action selector="didPan:" destination="LVB-YS-i5n" id="Q6U-p9-4Uk"/>
+                        <outlet property="delegate" destination="LVB-YS-i5n" id="vTT-1E-Bv9"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>
