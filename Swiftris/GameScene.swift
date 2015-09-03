@@ -51,6 +51,14 @@ class GameScene: SKScene {
         shapeLayer.position = LayerPosition
         shapeLayer.addChild(gameBoard)
         gameLayer.addChild(shapeLayer)
+        
+        //#1
+        runAction(SKAction.repeatActionForever(SKAction.playSoundFileNamed("theme.mp3", waitForCompletion: true)))
+    }
+    
+    //#2
+    func playSound(sound: String) {
+        runAction(SKAction.playSoundFileNamed(sound, waitForCompletion: false))
     }
     
     override func update(currentTime: CFTimeInterval) {

@@ -118,6 +118,10 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     }
     
     func gameDidBegin(swiftris: Swiftris) {
+        levelLabel.text = "\(swiftris.level)"
+        scoreLabel.text = "\(swiftris.score)"
+        scene.tickLengthMillis = TickLengthLevelOne
+        
         //The following is false when restarting a new game
         if swiftris.nextShape != nil && swiftris.nextShape!.blocks[0].sprite == nil {
             scene.addPreviewShapeToScene(swiftris.nextShape!) {
