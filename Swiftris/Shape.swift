@@ -30,7 +30,6 @@ enum Orientation: Int, Printable {
         return Orientation(rawValue: Int(arc4random_uniform(NumOrientations)))!
     }
     
-    //#1
     static func rotate(orientation: Orientation, clockwise: Bool) -> Orientation {
         var rotated = orientation.rawValue + (clockwise ? 1: -1)
         if rotated > Orientation.TwoSeventy.rawValue {
@@ -63,20 +62,16 @@ class Shape: Hashable, Printable {
     var column, row: Int
     
     //Required Overrides
-    
-    //#1
     //Subclasses must override this property
     var blockRowColumnPositions: [Orientation: Array<(columnDiff: Int, rowDiff: Int)>] {
         return [:]
     }
     
-    //#2
     //Subclasses must override this property
     var bottomBlocksForOrientations: [Orientation: Array<Block>] {
         return [:]
     }
     
-    //#3
     var bottomBlocks: Array<Block> {
         if let bottomBlocks = bottomBlocksForOrientations[orientation] {
             return bottomBlocks
@@ -87,7 +82,6 @@ class Shape: Hashable, Printable {
     
     //Hashable
     var hashValue: Int {
-        //#4
         return reduce(blocks, 0) {
             $0.hashValue ^ $1.hashValue
         }
@@ -106,14 +100,11 @@ class Shape: Hashable, Printable {
         initializeBlocks()
     }
     
-    //#5
     convenience init(column: Int, row: Int) {
         self.init(column: column, row: row, color: BlockColor.random(), orientation: Orientation.random())
     }
-    
-    //#1
+ 
     final func initializeBlocks() {
-        //#2
         if let blockRowColumnTranslations = blockRowColumnPositions[orientation] {
             for i in 0..<blockRowColumnTranslations.count {
                 let blockRow = row + blockRowColumnTranslations[i].rowDiff
@@ -124,7 +115,6 @@ class Shape: Hashable, Printable {
         }
     }
     
-    //#1
     final func rotateClockwise() {
         let newOrientation = Orientation.rotate(orientation, clockwise: true)
         rotateBlocks(newOrientation)
@@ -163,7 +153,6 @@ class Shape: Hashable, Printable {
         }
     }
     
-    //#2
     final func shiftBy(columns: Int, rows: Int) {
         self.column += columns
         self.row += rows
@@ -173,7 +162,6 @@ class Shape: Hashable, Printable {
         }
     }
     
-    //#3
     final func moveTo(column: Int, row: Int) {
         self.column = column
         self.row = row
@@ -182,8 +170,7 @@ class Shape: Hashable, Printable {
     
     final class func random(startingColumn: Int, startingRow: Int) -> Shape {
         switch Int(arc4random_uniform(NumShapeTypes)) {
-            
-            //#4
+
         case 0:
             return SquareShape(column: startingColumn, row: startingRow)
         case 1:

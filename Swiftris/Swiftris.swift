@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Matthew Allen Lin. All rights reserved.
 //
 
-//#1
 let NumColumns = 10
 let NumRows = 20
 
@@ -63,7 +62,6 @@ class Swiftris {
         delegate?.gameDidBegin(self)
     }
     
-    //#2
     func newShape() -> (fallingShape: Shape?, nextShape: Shape?) {
         fallingShape = nextShape
         nextShape = Shape.random(PreviewColumn, startingRow: PreviewRow)
@@ -79,7 +77,6 @@ class Swiftris {
         return (fallingShape, nextShape)
     }
     
-    //#2
     func detectIllegalPlacement() -> Bool {
         if let shape = fallingShape {
             for block in shape.blocks {
@@ -94,7 +91,6 @@ class Swiftris {
         return false
     }
     
-    //#1
     func settleShape() {
         if let shape = fallingShape {
             for block in shape.blocks {
@@ -104,8 +100,7 @@ class Swiftris {
             delegate?.gameShapeDidLand(self)
         }
     }
-    
-    //#2
+
     func detectTouch() -> Bool {
         if let shape = fallingShape {
             for bottomBlock in shape.bottomBlocks {
@@ -124,7 +119,6 @@ class Swiftris {
         delegate?.gameDidEnd(self)
     }
     
-    //#1
     func removeCompletedLines() -> (linesRemoved: Array<Array<Block>>, fallenBlocks: Array<Array<Block>>) {
         var removedLines = Array<Array<Block>>()
         for var row = NumRows - 1; row > 0; row-- {
@@ -144,12 +138,10 @@ class Swiftris {
             }
         }
         
-        //#3
         if removedLines.count == 0 {
             return([], [])
         }
         
-        //#4
         let pointsEarned = removedLines.count * PointsPerLine * level
         score += pointsEarned
         if score >= level * LevelThreshold {
@@ -196,7 +188,6 @@ class Swiftris {
         return allBlocks
     }
     
-    //#1
     func dropShape() {
         if let shape = fallingShape {
             while detectIllegalPlacement() == false {
@@ -207,7 +198,6 @@ class Swiftris {
         }
     }
     
-    //#2
     func letShapeFall() {
         if let shape = fallingShape {
             shape.lowerShapeByOneRow()
@@ -227,7 +217,6 @@ class Swiftris {
         }
     }
     
-    //#3
     func rotateShape() {
         if let shape = fallingShape {
             shape.rotateClockwise()
@@ -239,7 +228,6 @@ class Swiftris {
         }
     }
     
-    //#4
     func moveShapeLeft() {
         if let shape = fallingShape {
             shape.shiftLeftByOneColumn()

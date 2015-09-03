@@ -8,19 +8,16 @@
 
 import SpriteKit
 
-//#1
 let BlockSize: CGFloat = 20.0
 
 let TickLengthLevelOne = NSTimeInterval(600)
 
 class GameScene: SKScene {
     
-    //#2
     let gameLayer = SKNode()
     let shapeLayer = SKNode()
     let LayerPosition = CGPoint(x: 6, y: -6)
     
-    //#2
     var tick:(() -> ())?
     var tickLengthMillis = TickLengthLevelOne
     var lastTick: NSDate?
@@ -51,12 +48,9 @@ class GameScene: SKScene {
         shapeLayer.position = LayerPosition
         shapeLayer.addChild(gameBoard)
         gameLayer.addChild(shapeLayer)
-        
-        //#1
-        runAction(SKAction.repeatActionForever(SKAction.playSoundFileNamed("theme.mp3", waitForCompletion: true)))
+    runAction(SKAction.repeatActionForever(SKAction.playSoundFileNamed("theme.mp3", waitForCompletion: true)))
     }
     
-    //#2
     func playSound(sound: String) {
         runAction(SKAction.playSoundFileNamed(sound, waitForCompletion: false))
     }
@@ -64,7 +58,6 @@ class GameScene: SKScene {
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         
-        //#3
         if lastTick == nil {
             return
         }
@@ -75,7 +68,6 @@ class GameScene: SKScene {
         }
     }
     
-    //#4
     func startTicking() {
         lastTick = NSDate()
     }
@@ -84,7 +76,6 @@ class GameScene: SKScene {
         lastTick = nil
     }
     
-    //#3
     func pointForColumn(column: Int, row: Int) -> CGPoint {
         let x: CGFloat = LayerPosition.x + (CGFloat(column) * BlockSize) + (BlockSize/2)
         let y: CGFloat = LayerPosition.y - (CGFloat(row) * BlockSize) + (BlockSize/2)
@@ -101,15 +92,13 @@ class GameScene: SKScene {
             }
             let sprite = SKSpriteNode(texture: texture)
         
-        //#5
         sprite.position = pointForColumn(block.column, row:block.row - 2)
         shapeLayer.addChild(sprite)
         block.sprite = sprite
         
         //Animation
         sprite.alpha = 0
-        
-        //#6
+
         let moveAction = SKAction.moveTo(pointForColumn(block.column, row: block.row), duration: NSTimeInterval(0.2))
         moveAction.timingMode = .EaseOut
         let fadeInAction = SKAction.fadeAlphaTo(0.7, duration: 0.4)
@@ -142,11 +131,9 @@ class GameScene: SKScene {
         runAction(SKAction.waitForDuration(0.05), completion: completion)
     }
     
-    //#1
     func animateCollapsingLines(linesToRemove: Array<Array<Block>>, fallenBlocks: Array<Array<Block>>, completion: () -> ()) {
         var longestDuration: NSTimeInterval = 0
         
-        //#2
         for (columnIdx, column) in enumerate(fallenBlocks) {
             for(blockIdx, block) in enumerate(column) {
                 let newPosition = pointForColumn(block.column, row: block.row)
@@ -166,7 +153,6 @@ class GameScene: SKScene {
         
         for (rowIdx, row) in enumerate(linesToRemove) {
             for (blockIdx, block) in enumerate(row) {
-                //#4
                 let randomRadius = CGFloat(UInt(arc4random_uniform(400) + 100))
                 let goLeft = arc4random_uniform(100) % 2 == 0
                 
@@ -175,7 +161,6 @@ class GameScene: SKScene {
                 
                 let randomDuration = NSTimeInterval(arc4random_uniform(2)) + 0.5
         
-                //#5
                 var startAngle = CGFloat(M_PI)
                 var endAngle = startAngle * 2
                 if goLeft {
@@ -187,7 +172,6 @@ class GameScene: SKScene {
                 archAction.timingMode = .EaseIn
                 let sprite = block.sprite!
                 
-                //#6
                 sprite.zPosition = 100
                 sprite.runAction (
                     SKAction.sequence(
@@ -196,7 +180,6 @@ class GameScene: SKScene {
             }
         }
         
-        //#7
         runAction(SKAction.waitForDuration(longestDuration), completion: completion)
     }
 }
