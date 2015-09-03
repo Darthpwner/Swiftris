@@ -18,6 +18,11 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     //#1
     var panPointReference: CGPoint?
     
+    @IBOutlet weak var scoreLabel: UILabel!
+    
+    @IBOutlet weak var levelLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
